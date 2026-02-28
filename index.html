@@ -7,373 +7,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     :root {
-      --cream:       #F4EFE6;
-      --cream-dark:  #EDE5D8;
-      --green-deep:  #2C4A2E;
-      --green-mid:   #3D6B40;
-      --green-light: #8FA882;
-      --gold:        #8B6914;
-      --gold-light:  #C4A45A;
-      --text:        #2A2A2A;
-      --text-mid:    #5A5244;
-      --text-light:  #8C7E6E;
-      --border:      #D4C9B6;
-      --white:       #FDFAF6;
+      --cream: #F4EFE6; --cream-dark: #EDE5D8; --green-deep: #2C4A2E;
+      --green-mid: #3D6B40; --green-light: #8FA882; --gold: #8B6914;
+      --gold-light: #C4A45A; --text: #2A2A2A; --text-mid: #5A5244;
+      --text-light: #8C7E6E; --border: #D4C9B6; --white: #FDFAF6;
     }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'Jost', sans-serif;
-      background-color: var(--cream);
-      color: var(--text);
-      min-height: 100vh;
-      font-weight: 300;
-      letter-spacing: 0.01em;
-    }
-
-    header {
-      text-align: center;
-      padding: 56px 24px 40px;
-      background: var(--white);
-      border-bottom: 1px solid var(--border);
-    }
-
-    header::after {
-      content: '';
-      display: block;
-      width: 48px;
-      height: 2px;
-      background: var(--gold-light);
-      margin: 20px auto 0;
-    }
-
-    .logo-text {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 13px;
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 6px;
-    }
-
-    .studio-text {
-      font-size: 10px;
-      letter-spacing: 0.5em;
-      text-transform: uppercase;
-      color: var(--text-light);
-      margin-bottom: 28px;
-    }
-
-    header h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(32px, 5vw, 52px);
-      font-weight: 300;
-      color: var(--green-deep);
-      line-height: 1.15;
-      margin-bottom: 12px;
-    }
-
+    body { font-family: 'Jost', sans-serif; background: var(--cream); color: var(--text); min-height: 100vh; font-weight: 300; letter-spacing: 0.01em; }
+    header { text-align: center; padding: 56px 24px 40px; background: var(--white); border-bottom: 1px solid var(--border); }
+    header::after { content: ''; display: block; width: 48px; height: 2px; background: var(--gold-light); margin: 20px auto 0; }
+    .logo-text { font-family: 'Cormorant Garamond', serif; font-size: 13px; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+    .studio-text { font-size: 10px; letter-spacing: 0.5em; text-transform: uppercase; color: var(--text-light); margin-bottom: 28px; }
+    header h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(32px, 5vw, 52px); font-weight: 300; color: var(--green-deep); line-height: 1.15; margin-bottom: 12px; }
     header h1 em { font-style: italic; color: var(--gold); }
-
-    header p {
-      font-size: 14px;
-      color: var(--text-mid);
-      max-width: 480px;
-      margin: 0 auto;
-      line-height: 1.7;
-    }
-
+    header p { font-size: 14px; color: var(--text-mid); max-width: 480px; margin: 0 auto; line-height: 1.7; }
     main { max-width: 680px; margin: 0 auto; padding: 48px 24px 80px; }
-
-    .form-section {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      padding: 36px 40px;
-      margin-bottom: 20px;
-      position: relative;
-    }
-
-    .form-section::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px; height: 100%;
-      background: var(--green-light);
-      border-radius: 2px 0 0 2px;
-    }
-
-    .section-label {
-      font-size: 9px;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-      margin-bottom: 6px;
-    }
-
-    .section-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 22px;
-      font-weight: 400;
-      color: var(--green-deep);
-      margin-bottom: 6px;
-    }
-
-    .section-desc {
-      font-size: 12px;
-      color: var(--text-light);
-      margin-bottom: 28px;
-      line-height: 1.6;
-    }
-
+    .form-section { background: var(--white); border: 1px solid var(--border); border-radius: 2px; padding: 36px 40px; margin-bottom: 20px; position: relative; }
+    .form-section::before { content: ''; position: absolute; top: 0; left: 0; width: 3px; height: 100%; background: var(--green-light); border-radius: 2px 0 0 2px; }
+    .section-label { font-size: 9px; letter-spacing: 0.4em; text-transform: uppercase; color: var(--gold); font-weight: 500; margin-bottom: 6px; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: 22px; font-weight: 400; color: var(--green-deep); margin-bottom: 6px; }
+    .section-desc { font-size: 12px; color: var(--text-light); margin-bottom: 28px; line-height: 1.6; }
     .field-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
     .field-group { margin-bottom: 20px; }
     .field-group:last-child { margin-bottom: 0; }
-
-    label {
-      display: block;
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--text-mid);
-      font-weight: 500;
-      margin-bottom: 8px;
-    }
-
+    label { display: block; font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text-mid); font-weight: 500; margin-bottom: 8px; }
     label .req { color: var(--gold); margin-left: 2px; }
-
-    input[type="text"],
-    input[type="email"],
-    input[type="tel"],
-    textarea,
-    select {
-      width: 100%;
-      background: var(--cream);
-      border: 1px solid var(--border);
-      border-radius: 1px;
-      padding: 12px 14px;
-      font-family: 'Jost', sans-serif;
-      font-size: 14px;
-      font-weight: 300;
-      color: var(--text);
-      transition: border-color 0.2s, box-shadow 0.2s;
-      appearance: none;
-      outline: none;
+    .helper-text { font-size: 11px; color: var(--text-light); margin-top: 6px; line-height: 1.5; font-weight: 300; letter-spacing: 0; text-transform: none; display: block; }
+    input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+      width: 100%; background: var(--cream); border: 1px solid var(--border); border-radius: 1px;
+      padding: 12px 14px; font-family: 'Jost', sans-serif; font-size: 14px; font-weight: 300;
+      color: var(--text); transition: border-color 0.2s, box-shadow 0.2s; appearance: none; outline: none;
     }
-
-    input:focus, textarea:focus, select:focus {
-      border-color: var(--green-light);
-      box-shadow: 0 0 0 3px rgba(141,168,130,0.15);
-      background: var(--white);
-    }
-
+    input:focus, textarea:focus, select:focus { border-color: var(--green-light); box-shadow: 0 0 0 3px rgba(141,168,130,0.15); background: var(--white); }
     textarea { resize: vertical; min-height: 90px; line-height: 1.6; }
     input::placeholder, textarea::placeholder { color: var(--text-light); }
-
     .radio-group, .check-group { display: flex; flex-direction: column; gap: 10px; }
     .radio-group.inline { flex-direction: row; gap: 24px; flex-wrap: wrap; }
-
-    .radio-item, .check-item {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      cursor: pointer;
-    }
-
-    .radio-item input, .check-item input {
-      width: 16px; height: 16px; min-width: 16px;
-      margin-top: 2px;
-      accent-color: var(--green-deep);
-      cursor: pointer;
-    }
-
-    .radio-item span, .check-item span {
-      font-size: 13px;
-      color: var(--text);
-      line-height: 1.5;
-      font-weight: 300;
-    }
-
-    .radio-item span small, .check-item span small {
-      display: block;
-      font-size: 11px;
-      color: var(--text-light);
-      margin-top: 1px;
-    }
-
-    .service-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }
-
-    .service-card {
-      border: 1.5px solid var(--border);
-      border-radius: 2px;
-      padding: 18px 14px;
-      cursor: pointer;
-      transition: all 0.2s;
-      text-align: center;
-      position: relative;
-      user-select: none;
-    }
-
+    .radio-item, .check-item { display: flex; align-items: flex-start; gap: 10px; cursor: pointer; }
+    .radio-item input, .check-item input { width: 16px; height: 16px; min-width: 16px; margin-top: 2px; accent-color: var(--green-deep); cursor: pointer; }
+    .radio-item span, .check-item span { font-size: 13px; color: var(--text); line-height: 1.5; font-weight: 300; }
+    .radio-item span small, .check-item span small { display: block; font-size: 11px; color: var(--text-light); margin-top: 1px; }
+    .service-cards { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; margin-bottom: 4px; }
+    .service-card { border: 1.5px solid var(--border); border-radius: 2px; padding: 18px 14px; cursor: pointer; transition: all 0.2s; text-align: center; position: relative; user-select: none; }
     .service-card:hover { border-color: var(--green-light); background: var(--cream); }
-
-    .service-card.selected {
-      border-color: var(--green-deep);
-      background: var(--cream-dark);
-    }
-
-    .service-card.selected::after {
-      content: '✓';
-      position: absolute;
-      top: 8px; right: 10px;
-      font-size: 11px;
-      color: var(--green-deep);
-    }
-
+    .service-card.selected { border-color: var(--green-deep); background: var(--cream-dark); }
+    .service-card.selected::after { content: '✓'; position: absolute; top: 8px; right: 10px; font-size: 11px; color: var(--green-deep); }
     .card-icon { font-size: 20px; margin-bottom: 8px; display: block; }
-
-    .card-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 15px;
-      font-weight: 500;
-      color: var(--green-deep);
-      display: block;
-      margin-bottom: 4px;
-    }
-
+    .card-title { font-family: 'Cormorant Garamond', serif; font-size: 15px; font-weight: 500; color: var(--green-deep); display: block; margin-bottom: 4px; }
     .card-sub { font-size: 10px; color: var(--text-light); letter-spacing: 0.05em; }
-
     .conditional { display: none; }
     .conditional.visible { display: block; animation: fadeIn 0.3s ease; }
-
     .sub-field { display: none; margin-top: 16px; }
     .sub-field.visible { display: block; animation: fadeIn 0.25s ease; }
-
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-6px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .warm-note {
-      background: #F9F3E8;
-      border: 1px solid var(--gold-light);
-      border-radius: 2px;
-      padding: 14px 18px;
-      margin-top: 20px;
-      font-size: 13px;
-      color: var(--text-mid);
-      line-height: 1.6;
-    }
-
-    .warm-note strong {
-      display: block;
-      color: var(--gold);
-      font-size: 10px;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      margin-bottom: 4px;
-      font-weight: 500;
-    }
-
-    .not-sure-tip {
-      display: none;
-      background: var(--cream-dark);
-      border-left: 3px solid var(--green-light);
-      padding: 12px 16px;
-      margin-top: 12px;
-      font-size: 12px;
-      color: var(--text-mid);
-      line-height: 1.6;
-      border-radius: 0 2px 2px 0;
-    }
-
-    .not-sure-tip.visible { display: block; animation: fadeIn 0.25s ease; }
-
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(-6px); } to { opacity: 1; transform: translateY(0); } }
+    .warm-note { background: #F9F3E8; border: 1px solid var(--gold-light); border-radius: 2px; padding: 14px 18px; margin-top: 20px; font-size: 13px; color: var(--text-mid); line-height: 1.6; }
+    .warm-note strong { display: block; color: var(--gold); font-size: 10px; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 4px; font-weight: 500; }
+    .info-tip { display: none; background: var(--cream-dark); border-left: 3px solid var(--green-light); padding: 12px 16px; margin-top: 12px; font-size: 12px; color: var(--text-mid); line-height: 1.6; border-radius: 0 2px 2px 0; }
+    .info-tip.visible { display: block; animation: fadeIn 0.25s ease; }
     .divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-
     .submit-wrap { text-align: center; margin-top: 32px; }
-
-    button[type="submit"] {
-      font-family: 'Jost', sans-serif;
-      font-size: 11px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--green-deep);
-      border: none;
-      padding: 18px 52px;
-      cursor: pointer;
-      transition: background 0.2s, transform 0.15s;
-      border-radius: 1px;
-    }
-
+    button[type="submit"] { font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); background: var(--green-deep); border: none; padding: 18px 52px; cursor: pointer; transition: background 0.2s, transform 0.15s; border-radius: 1px; }
     button[type="submit"]:hover { background: var(--green-mid); transform: translateY(-1px); }
     button[type="submit"]:disabled { background: var(--green-light); cursor: not-allowed; transform: none; }
-
     .submit-note { font-size: 11px; color: var(--text-light); margin-top: 14px; }
-
-    #success-msg {
-      display: none;
-      text-align: center;
-      padding: 72px 40px;
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-    }
-
+    #success-msg { display: none; text-align: center; padding: 72px 40px; background: var(--white); border: 1px solid var(--border); border-radius: 2px; }
     #success-msg .success-icon { font-size: 36px; margin-bottom: 20px; display: block; }
-
-    #success-msg h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 40px;
-      font-weight: 300;
-      color: var(--green-deep);
-      margin-bottom: 14px;
-    }
-
+    #success-msg h2 { font-family: 'Cormorant Garamond', serif; font-size: 40px; font-weight: 300; color: var(--green-deep); margin-bottom: 14px; }
     #success-msg h2 em { font-style: italic; color: var(--gold); }
-
-    #success-msg p {
-      font-size: 14px;
-      color: var(--text-mid);
-      line-height: 1.8;
-      max-width: 400px;
-      margin: 0 auto 24px;
-    }
-
-    #success-msg a {
-      display: inline-block;
-      font-size: 10px;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--white);
-      background: var(--green-deep);
-      padding: 14px 32px;
-      text-decoration: none;
-      border-radius: 1px;
-      transition: background 0.2s;
-    }
-
+    #success-msg p { font-size: 14px; color: var(--text-mid); line-height: 1.8; max-width: 400px; margin: 0 auto 24px; }
+    #success-msg a { display: inline-block; font-size: 10px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--white); background: var(--green-deep); padding: 14px 32px; text-decoration: none; border-radius: 1px; transition: background 0.2s; }
     #success-msg a:hover { background: var(--green-mid); }
-
-    footer {
-      text-align: center;
-      padding: 28px;
-      font-size: 11px;
-      color: var(--text-light);
-      letter-spacing: 0.1em;
-      border-top: 1px solid var(--border);
-    }
-
+    footer { text-align: center; padding: 28px; font-size: 11px; color: var(--text-light); letter-spacing: 0.1em; border-top: 1px solid var(--border); }
     footer a { color: var(--gold); text-decoration: none; }
-
     .hp-field { display: none !important; }
-
     @media (max-width: 600px) {
       .form-section { padding: 28px 22px; }
       .field-row { grid-template-columns: 1fr; }
@@ -393,10 +100,7 @@
 
 <main>
   <form id="inquiry-form">
-
-    <div class="hp-field">
-      <input type="text" name="website" tabindex="-1" autocomplete="off"/>
-    </div>
+    <div class="hp-field"><input type="text" name="website" tabindex="-1" autocomplete="off"/></div>
 
     <!-- STEP 1: CONTACT -->
     <div class="form-section">
@@ -421,21 +125,34 @@
       </div>
 
       <div class="field-group">
-        <label>Phone Number</label>
+        <label>Phone Number <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:300;">(optional)</span></label>
         <input type="tel" name="Phone Number" placeholder="(000) 000-0000"/>
+        <span class="helper-text">Only used if a quick clarification helps your project move forward.</span>
+      </div>
+
+      <div class="field-group" id="contact-pref-field">
+        <label>If I need to reach you quickly, I prefer</label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Contact Preference" value="Email"/>
+            <span>Email</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Contact Preference" value="Text"/>
+            <span>Text</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Contact Preference" value="Phone call"/>
+            <span>Phone call</span>
+          </label>
+        </div>
       </div>
 
       <div class="field-group">
         <label>Do you have a deadline or special date in mind? <span class="req">*</span></label>
         <div class="radio-group inline">
-          <label class="radio-item">
-            <input type="radio" name="Has Deadline" value="Yes" required/>
-            <span>Yes</span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Has Deadline" value="No"/>
-            <span>No</span>
-          </label>
+          <label class="radio-item"><input type="radio" name="Has Deadline" value="Yes" required/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Has Deadline" value="No"/><span>No</span></label>
         </div>
         <div class="sub-field" id="deadline-field">
           <label>What's the date?</label>
@@ -454,12 +171,12 @@
         <div class="service-card" id="card-curation" onclick="selectService('curation', this)">
           <span class="card-icon">🌿</span>
           <span class="card-title">Memory Harvest</span>
-          <span class="card-sub">Photo Curation</span>
+          <span class="card-sub">Photo Curation Only</span>
         </div>
         <div class="service-card" id="card-book" onclick="selectService('book', this)">
           <span class="card-icon">📖</span>
           <span class="card-title">Orchard Stories</span>
-          <span class="card-sub">Book Design</span>
+          <span class="card-sub">Book Design Only</span>
         </div>
         <div class="service-card" id="card-both" onclick="selectService('both', this)">
           <span class="card-icon">✨</span>
@@ -481,15 +198,19 @@
         <div class="radio-group">
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="Under 400" onchange="updateCurationTier('seedling')"/>
-            <span>Under 400 <small>Seedling Curation</small></span>
+            <span>Up to 400 files <small>Seedling Curation</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Photo Count" value="401-850" onchange="updateCurationTier('orchard')"/>
-            <span>401–850 <small>Orchard Curation</small></span>
+            <input type="radio" name="Photo Count" value="401-800" onchange="updateCurationTier('orchard')"/>
+            <span>401–800 files <small>Orchard Curation</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Photo Count" value="851-1500" onchange="updateCurationTier('harvest')"/>
-            <span>851–1,500 <small>Harvest Curation</small></span>
+            <input type="radio" name="Photo Count" value="801-1200" onchange="updateCurationTier('harvest')"/>
+            <span>801–1,200 files <small>Harvest Curation</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="1200+" onchange="updateCurationTier('split')"/>
+            <span>More than 1,200 files</span>
           </label>
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="Not sure yet" onchange="updateCurationTier('unsure')"/>
@@ -497,7 +218,11 @@
           </label>
         </div>
 
-        <div class="not-sure-tip" id="not-sure-tip">
+        <div class="info-tip" id="tip-split">
+          🌳 Your collection is beautifully large! Collections over 1,200 files are split into two curation sessions. Please select two packages above that together cover your total — for example, two Orchard packages for a collection of around 1,600 files. Not sure how to split? Just let me know in the notes and I'll help you figure it out.
+        </div>
+
+        <div class="info-tip" id="tip-unsure">
           💛 No worries at all — a rough estimate is totally fine. I'll walk you through a quick count before we finalize anything, and we can always adjust your tier together.
         </div>
       </div>
@@ -507,18 +232,9 @@
       <div class="field-group">
         <label>Are you interested in Bountiful Bin?</label>
         <div class="radio-group inline">
-          <label class="radio-item">
-            <input type="radio" name="Bountiful Bin" value="Yes" onchange="document.getElementById('bin-qty').classList.add('visible')"/>
-            <span>Yes</span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Bountiful Bin" value="No" onchange="document.getElementById('bin-qty').classList.remove('visible')"/>
-            <span>No</span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Bountiful Bin" value="Tell me more" onchange="document.getElementById('bin-qty').classList.remove('visible')"/>
-            <span>Tell me more</span>
-          </label>
+          <label class="radio-item"><input type="radio" name="Bountiful Bin" value="Yes" onchange="document.getElementById('bin-qty').classList.add('visible')"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Bountiful Bin" value="No" onchange="document.getElementById('bin-qty').classList.remove('visible')"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Bountiful Bin" value="Tell me more" onchange="document.getElementById('bin-qty').classList.remove('visible')"/><span>Tell me more</span></label>
         </div>
         <div class="sub-field" id="bin-qty">
           <label>How many? <span id="bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
@@ -533,22 +249,44 @@
       <div class="field-group conditional" id="folder-org-field">
         <label>Are you interested in Upload-Ready Folder Organization?</label>
         <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="Folder Organization" value="Yes"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Folder Organization" value="No"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Folder Organization" value="Tell me more"/><span>Tell me more</span></label>
+        </div>
+        <span class="helper-text">Included in Orchard &amp; Harvest — available as an add-on for Seedling only.</span>
+      </div>
+    </div>
+
+    <!-- FULL ORCHARD PHOTO COUNT -->
+    <div class="form-section conditional" id="section-combo-photos">
+      <div class="section-label">Your Collection</div>
+      <div class="section-title">Tell Me About Your Photos</div>
+      <div class="section-desc">Helps me pair the right curation tier with your book.</div>
+
+      <div class="field-group">
+        <label>Approximately how many photos are in this collection? <span class="req">*</span></label>
+        <div class="radio-group">
           <label class="radio-item">
-            <input type="radio" name="Folder Organization" value="Yes"/>
-            <span>Yes</span>
+            <input type="radio" name="Photo Count" value="Under 400" onchange="updateComboTier('seedling')"/>
+            <span>Under 400 <small>Will pair with Seedling Curation</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Folder Organization" value="No"/>
-            <span>No</span>
+            <input type="radio" name="Photo Count" value="401-800" onchange="updateComboTier('orchard')"/>
+            <span>400–800 <small>Will pair with Orchard Curation</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Folder Organization" value="Tell me more"/>
-            <span>Tell me more</span>
+            <input type="radio" name="Photo Count" value="801-1200" onchange="updateComboTier('harvest')"/>
+            <span>800–1,200 <small>Will pair with Harvest Curation</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="Not sure" onchange="updateComboTier('unsure')"/>
+            <span>Not sure yet</span>
           </label>
         </div>
-        <small style="font-size:11px;color:var(--text-light);margin-top:6px;display:block;">Included in Orchard &amp; Harvest — available as an add-on for Seedling</small>
+        <div class="info-tip" id="tip-combo-unsure">
+          💛 That's totally fine — we'll figure it out together before anything is finalized.
+        </div>
       </div>
-
     </div>
 
     <!-- BOOK DETAILS -->
@@ -562,15 +300,15 @@
         <div class="radio-group">
           <label class="radio-item">
             <input type="radio" name="Book Type" value="Vacation Book"/>
-            <span>Vacation Book</span>
+            <span>Vacation Book <small>Highlights the best moments from your trip</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Book Type" value="Baby First Year Book"/>
+            <span>Baby First Year Book <small>Monthly &amp; milestone-focused</small></span>
           </label>
           <label class="radio-item">
             <input type="radio" name="Book Type" value="Graduation Book"/>
-            <span>Graduation Book</span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Book Type" value="Baby Book"/>
-            <span>Baby Book</span>
+            <span>Graduation Book <small>A keepsake celebrating achievements and the story behind them</small></span>
           </label>
         </div>
       </div>
@@ -578,23 +316,23 @@
       <hr class="divider"/>
 
       <div class="field-group">
-        <label>Are you interested in any enhancements?</label>
+        <label>Are you interested in enhancing your book with any of the following?</label>
         <div class="check-group">
           <label class="check-item">
             <input type="checkbox" name="Enhancement: Extra Photo Spread" value="Yes" onchange="toggleSubCount('spreads-field', this.checked)"/>
-            <span>Extra Photo Spread <small>2 additional pages per spread</small></span>
+            <span>Extra photo spreads <small>For fuller chapters</small></span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Enhancement: Roots and Reflection Spread" value="Yes"/>
-            <span>Roots &amp; Reflection Spread <small>Typeset letter + 1–3 hero portraits</small></span>
+            <span>A Roots &amp; Reflection spread <small>Letter + portraits</small></span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Enhancement: Additional Letters" value="Yes" onchange="toggleSubCount('letters-field', this.checked)"/>
-            <span>Additional Letters <small>Extra voices — grandparents, siblings, coaches</small></span>
+            <span>Additional letters <small>Grandparents, siblings, coaches</small></span>
           </label>
           <label class="check-item">
             <input type="checkbox" name="Enhancement: The Narrative Edit" value="Yes"/>
-            <span>The Narrative Edit <small>Short reflections woven throughout the story</small></span>
+            <span>Narrative reflections woven throughout</span>
           </label>
         </div>
       </div>
@@ -609,7 +347,7 @@
           <option value="4">4 spreads</option>
           <option value="5">5 spreads</option>
         </select>
-        <small style="font-size:11px;color:var(--text-light);margin-top:4px;display:block;">1 spread = 2 pages — we can always adjust together</small>
+        <span class="helper-text">1 spread = 2 pages — we can always adjust together.</span>
       </div>
 
       <div class="sub-field" id="letters-field">
@@ -628,7 +366,6 @@
         <strong>✦ A note on enhancements</strong>
         Not sure what you want yet? That's completely okay — your initial invoice will be an estimate and we'll finalize everything together. I'm happy to help you decide what fits your story best.
       </div>
-
     </div>
 
     <!-- STEP 3: NOTES -->
@@ -636,7 +373,6 @@
       <div class="section-label">Step 03</div>
       <div class="section-title">Anything Else?</div>
       <div class="section-desc">A special occasion, a story you want to share, or a question you have.</div>
-
       <div class="field-group">
         <label>Notes or questions</label>
         <textarea name="Notes" placeholder="Share anything that would help me understand your project..."></textarea>
@@ -647,7 +383,6 @@
       <button type="submit" id="submit-btn">Let's Get Started</button>
       <p class="submit-note">I'll be in touch within 2 business days. No spam, ever.</p>
     </div>
-
   </form>
 
   <div id="success-msg">
@@ -656,7 +391,6 @@
     <p>Your inquiry has been received and I'll be in touch within 2 business days. I can't wait to hear more about your memories.</p>
     <a href="https://memoryorchardstudio.wixsite.com/orchard">← Back to Memory Orchard Studio</a>
   </div>
-
 </main>
 
 <footer>
@@ -675,31 +409,34 @@
       type === 'curation' ? 'Photo Curation' :
       type === 'book'     ? 'Book Design' : 'Both — Curation + Book';
 
-    var showCuration = (type === 'curation' || type === 'both');
-    var showBook     = (type === 'book'     || type === 'both');
-
     var sc = document.getElementById('section-curation');
     var sb = document.getElementById('section-book');
-    showCuration ? sc.classList.add('visible') : sc.classList.remove('visible');
-    showBook     ? sb.classList.add('visible') : sb.classList.remove('visible');
+    var scp = document.getElementById('section-combo-photos');
 
-    if (!showCuration) updateCurationTier(null);
+    if (type === 'curation') {
+      sc.classList.add('visible');
+      sb.classList.remove('visible');
+      scp.classList.remove('visible');
+    } else if (type === 'book') {
+      sc.classList.remove('visible');
+      sb.classList.add('visible');
+      scp.classList.remove('visible');
+    } else {
+      sc.classList.remove('visible');
+      sb.classList.add('visible');
+      scp.classList.add('visible');
+    }
+
+    if (type !== 'curation') updateCurationTier(null);
   }
 
   function updateCurationTier(tier) {
-    var tip    = document.getElementById('not-sure-tip');
-    var folder = document.getElementById('folder-org-field');
+    document.getElementById('tip-split').classList.toggle('visible', tier === 'split');
+    document.getElementById('tip-unsure').classList.toggle('visible', tier === 'unsure');
+    document.getElementById('folder-org-field').classList.toggle('visible', tier === 'seedling');
+
     var binOpt2 = document.getElementById('bin-opt-2');
     var binNote = document.getElementById('bin-max-note');
-
-    tier === 'unsure'
-      ? tip.classList.add('visible')
-      : tip.classList.remove('visible');
-
-    tier === 'seedling'
-      ? folder.classList.add('visible')
-      : folder.classList.remove('visible');
-
     if (tier === 'harvest') {
       binNote.textContent = '(max 1 for Harvest)';
       if (binOpt2) binOpt2.disabled = true;
@@ -709,32 +446,29 @@
     }
   }
 
+  function updateComboTier(tier) {
+    document.getElementById('tip-combo-unsure').classList.toggle('visible', tier === 'unsure');
+  }
+
   document.querySelectorAll('input[name="Has Deadline"]').forEach(function(radio) {
     radio.addEventListener('change', function() {
-      var field = document.getElementById('deadline-field');
-      this.value === 'Yes'
-        ? field.classList.add('visible')
-        : field.classList.remove('visible');
+      document.getElementById('deadline-field').classList.toggle('visible', this.value === 'Yes');
     });
   });
 
   function toggleSubCount(fieldId, show) {
-    var el = document.getElementById(fieldId);
-    show ? el.classList.add('visible') : el.classList.remove('visible');
+    document.getElementById(fieldId).classList.toggle('visible', show);
   }
 
   document.getElementById('inquiry-form').addEventListener('submit', function(e) {
     e.preventDefault();
-
     var btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
-    var formData = new FormData(this);
-
     fetch(SCRIPT_URL, {
       method: 'POST',
-      body: formData,
+      body: new FormData(this),
       mode: 'no-cors'
     }).then(function() {
       document.getElementById('inquiry-form').style.display = 'none';
@@ -747,6 +481,5 @@
     });
   });
 </script>
-
 </body>
 </html>
