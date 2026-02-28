@@ -427,8 +427,7 @@
 </header>
 
 <main>
-  <form id="inquiry-form" action="https://script.google.com/macros/s/AKfycbwlpHkQoRYsC-FD_uQL10yOX3H94VDCK5JZPC1OOXG4ZkxdOs_zVYNXnjNqSfJ0nKjk/exec"" method="POST"target="hidden_iframe" > 
-   
+ <form id="inquiry-form">
 
     <!-- FormSubmit config — replace memoryorchardstudio@gmail.com above with your real email -->
 
@@ -727,7 +726,22 @@
     const input = el.querySelector('input');
     input.required = show;
   }
+
+   document.getElementById('inquiry-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    let formSubmitted = true;
+    const formData = new FormData(this);
+    fetch('https://script.google.com/macros/s/AKfycbwlpHkQoRYsC-FD_uQL10yOX3H94VDCK5JZPC1OOXG4ZkxdOs_zVYNXnjNqSfJ0nKjk/exec', {
+      method: 'POST',
+      body: formData
+    }).then(() => {
+      document.getElementById('inquiry-form').style.display = 'none';
+      document.getElementById('success-msg').style.display = 'block';
+      window.scrollTo(0, 0);
+    }).catch(() => {
+      alert('Something went wrong. Please try again.');
+    });
+  });
 </script>
-<iframe name="hidden_iframe" style="display:none"></iframe>
 </body>
 </html>
