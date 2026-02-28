@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Start Your Project — Memory Orchard Studio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream:       #F4EFE6;
+      --cream-dark:  #EDE5D8;
+      --green-deep:  #2C4A2E;
+      --green-mid:   #3D6B40;
+      --green-light: #8FA882;
+      --gold:        #8B6914;
+      --gold-light:  #C4A45A;
+      --text:        #2A2A2A;
+      --text-mid:    #5A5244;
+      --text-light:  #8C7E6E;
+      --border:      #D4C9B6;
+      --white:       #FDFAF6;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      background-color: var(--cream);
+      color: var(--text);
+      min-height: 100vh;
+      font-weight: 300;
+      letter-spacing: 0.01em;
+    }
+
+    /* ── HEADER ── */
+    header {
+      text-align: center;
+      padding: 56px 24px 40px;
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+      position: relative;
+    }
+
+    header::after {
+      content: '';
+      display: block;
+      width: 48px;
+      height: 2px;
+      background: var(--gold-light);
+      margin: 20px auto 0;
+    }
+
+    .logo-text {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 13px;
+      font-weight: 400;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 6px;
+    }
+
+    .studio-text {
+      font-family: 'Jost', sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.5em;
+      text-transform: uppercase;
+      color: var(--text-light);
+      margin-bottom: 28px;
+    }
+
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 300;
+      color: var(--green-deep);
+      line-height: 1.15;
+      margin-bottom: 12px;
+    }
+
+    header h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    header p {
+      font-size: 14px;
+      color: var(--text-mid);
+      letter-spacing: 0.04em;
+      max-width: 480px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── MAIN LAYOUT ── */
+    main {
+      max-width: 680px;
+      margin: 0 auto;
+      padding: 48px 24px 80px;
+    }
+
+    /* ── FORM SECTIONS ── */
+    .form-section {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 36px 40px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .form-section::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px;
+      height: 100%;
+      background: var(--green-light);
+      border-radius: 2px 0 0 2px;
+    }
+
+    .section-label {
+      font-size: 9px;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 400;
+      color: var(--green-deep);
+      margin-bottom: 6px;
+    }
+
+    .section-desc {
+      font-size: 12px;
+      color: var(--text-light);
+      letter-spacing: 0.03em;
+      margin-bottom: 28px;
+      line-height: 1.6;
+    }
+
+    /* ── FIELD ROWS ── */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .field-group {
+      margin-bottom: 20px;
+    }
+
+    .field-group:last-child { margin-bottom: 0; }
+
+    label {
+      display: block;
+      font-size: 10px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--text-mid);
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    label .req { color: var(--gold); margin-left: 2px; }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="tel"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      background: var(--cream);
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      padding: 12px 14px;
+      font-family: 'Jost', sans-serif;
+      font-size: 14px;
+      font-weight: 300;
+      color: var(--text);
+      transition: border-color 0.2s, box-shadow 0.2s;
+      appearance: none;
+      outline: none;
+    }
+
+    input:focus, textarea:focus, select:focus {
+      border-color: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(141, 168, 130, 0.15);
+      background: var(--white);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 90px;
+      line-height: 1.6;
+    }
+
+    input::placeholder, textarea::placeholder { color: var(--text-light); }
+
+    /* ── RADIO + CHECKBOX ── */
+    .radio-group, .check-group {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .radio-group.inline {
+      flex-direction: row;
+      gap: 24px;
+    }
+
+    .radio-item, .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      cursor: pointer;
+    }
+
+    .radio-item input, .check-item input {
+      width: 16px;
+      height: 16px;
+      min-width: 16px;
+      margin-top: 2px;
+      accent-color: var(--green-deep);
+      cursor: pointer;
+    }
+
+    .radio-item span, .check-item span {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.5;
+      font-weight: 300;
+    }
+
+    .radio-item span small, .check-item span small {
+      display: block;
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 1px;
+    }
+
+    /* ── SERVICE CARDS ── */
+    .service-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 4px;
+    }
+
+    .service-card {
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      padding: 18px 14px;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-align: center;
+      position: relative;
+    }
+
+    .service-card:hover {
+      border-color: var(--green-light);
+      background: var(--cream);
+    }
+
+    .service-card input[type="radio"] {
+      position: absolute;
+      opacity: 0;
+      width: 0; height: 0;
+    }
+
+    .service-card.selected {
+      border-color: var(--green-deep);
+      background: var(--cream-dark);
+    }
+
+    .service-card.selected::after {
+      content: '✓';
+      position: absolute;
+      top: 8px; right: 10px;
+      font-size: 11px;
+      color: var(--green-deep);
+    }
+
+    .card-icon {
+      font-size: 20px;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .card-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--green-deep);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .card-sub {
+      font-size: 10px;
+      color: var(--text-light);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONDITIONAL SECTIONS ── */
+    .conditional {
+      display: none;
+      animation: fadeIn 0.3s ease;
+    }
+
+    .conditional.visible { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-6px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── CONDITIONAL SUB-FIELDS ── */
+    .sub-field {
+      display: none;
+      margin-top: 16px;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .sub-field.visible { display: block; }
+
+    /* ── DIVIDER ── */
+    .divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 24px 0;
+    }
+
+    /* ── SUBMIT ── */
+    .submit-wrap {
+      text-align: center;
+      margin-top: 32px;
+    }
+
+    button[type="submit"] {
+      font-family: 'Jost', sans-serif;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--green-deep);
+      border: none;
+      padding: 18px 52px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.15s;
+      border-radius: 1px;
+    }
+
+    button[type="submit"]:hover {
+      background: var(--green-mid);
+      transform: translateY(-1px);
+    }
+
+    .submit-note {
+      font-size: 11px;
+      color: var(--text-light);
+      margin-top: 14px;
+      letter-spacing: 0.03em;
+    }
+
+    /* ── SUCCESS STATE ── */
+    #success-msg {
+      display: none;
+      text-align: center;
+      padding: 60px 40px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+    }
+
+    #success-msg h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 36px;
+      font-weight: 300;
+      color: var(--green-deep);
+      margin-bottom: 12px;
+    }
+
+    #success-msg p {
+      font-size: 14px;
+      color: var(--text-mid);
+      line-height: 1.7;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 28px;
+      font-size: 11px;
+      color: var(--text-light);
+      letter-spacing: 0.1em;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--gold); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .form-section { padding: 28px 22px; }
+      .field-row { grid-template-columns: 1fr; }
+      .service-cards { grid-template-columns: 1fr; }
+      .radio-group.inline { flex-direction: column; gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="logo-text">Memory Orchard</div>
+  <div class="studio-text">Studio</div>
+  <h1>Start Your <em>Project</em></h1>
+  <p>Tell me about your memories and what you're hoping to create. I'll be in touch within 2 business days.</p>
+</header>
+
+<main>
+  <form id="inquiry-form" action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+
+    <!-- FormSubmit config — replace YOUR_EMAIL_HERE above with your real email -->
+    <input type="hidden" name="_subject" value="New Project Inquiry — Memory Orchard Studio"/>
+    <input type="hidden" name="_captcha" value="false"/>
+    <input type="hidden" name="_template" value="table"/>
+    <!-- To redirect after submit, uncomment below and set your thank-you page URL -->
+    <!-- <input type="hidden" name="_next" value="https://yoursite.com/thank-you"/> -->
+
+    <!-- ── CONTACT INFO ── -->
+    <div class="form-section">
+      <div class="section-label">Step 01</div>
+      <div class="section-title">Contact Information</div>
+      <div class="section-desc">So I know who I'm creating for.</div>
+
+      <div class="field-row">
+        <div class="field-group">
+          <label>First Name <span class="req">*</span></label>
+          <input type="text" name="First Name" required placeholder="Tracie"/>
+        </div>
+        <div class="field-group">
+          <label>Last Name <span class="req">*</span></label>
+          <input type="text" name="Last Name" required placeholder="Smith"/>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Email Address <span class="req">*</span></label>
+        <input type="email" name="Email Address" required placeholder="you@example.com"/>
+      </div>
+
+      <div class="field-group">
+        <label>Phone Number</label>
+        <input type="tel" name="Phone Number" placeholder="(000) 000-0000"/>
+      </div>
+
+      <div class="field-group">
+        <label>Do you have a deadline or special date in mind? <span class="req">*</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Has Deadline" value="Yes" required onclick="toggleDeadline(true)"/>
+            <span>Yes</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Has Deadline" value="No" onclick="toggleDeadline(false)"/>
+            <span>No</span>
+          </label>
+        </div>
+        <div class="sub-field" id="deadline-field">
+          <label>What's the date? <span class="req">*</span></label>
+          <input type="text" name="Deadline Date" placeholder="e.g. Christmas 2026, June graduation"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── SERVICE SELECTION ── -->
+    <div class="form-section">
+      <div class="section-label">Step 02</div>
+      <div class="section-title">What Are You Creating?</div>
+      <div class="section-desc">Select the service that fits where you are right now.</div>
+
+      <div class="service-cards">
+        <div class="service-card" id="card-curation" onclick="selectService('curation', this)">
+          <input type="radio" name="Service" value="Photo Curation" id="svc-curation"/>
+          <span class="card-icon">🌿</span>
+          <span class="card-title">Memory Harvest</span>
+          <span class="card-sub">Photo Curation</span>
+        </div>
+        <div class="service-card" id="card-book" onclick="selectService('book', this)">
+          <input type="radio" name="Service" value="Book Design" id="svc-book"/>
+          <span class="card-icon">📖</span>
+          <span class="card-title">Orchard Stories</span>
+          <span class="card-sub">Book Design</span>
+        </div>
+        <div class="service-card" id="card-both" onclick="selectService('both', this)">
+          <input type="radio" name="Service" value="Both — Curation + Book" id="svc-both"/>
+          <span class="card-icon">✨</span>
+          <span class="card-title">The Full Orchard</span>
+          <span class="card-sub">Curation + Book</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CURATION DETAILS (conditional) ── -->
+    <div class="form-section conditional" id="section-curation">
+      <div class="section-label">Curation Details</div>
+      <div class="section-title">Tell Me About Your Photos</div>
+      <div class="section-desc">Shown because you selected a curation service.</div>
+
+      <div class="field-group">
+        <label>Approximately how many photos do you have? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="Under 300"/>
+            <span>Under 300 <small>Seedling Curation — up to 400 files</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="300–800"/>
+            <span>300–800 <small>Orchard Curation — up to 800 files</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="800–1,500"/>
+            <span>800–1,500 <small>Harvest Curation — up to 1,200 files</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="I'm not sure"/>
+            <span>I'm not sure yet</span>
+          </label>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="field-group">
+        <label>Are you interested in Bountiful Bin (printed file labels)?</label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Bountiful Bin" value="Yes"/>
+            <span>Yes</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Bountiful Bin" value="No"/>
+            <span>No</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Bountiful Bin" value="Tell me more"/>
+            <span>Tell me more</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Are you interested in Upload-Ready Folder Organization?</label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Folder Organization" value="Yes"/>
+            <span>Yes</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Folder Organization" value="No"/>
+            <span>No</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Folder Organization" value="Tell me more"/>
+            <span>Tell me more</span>
+          </label>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── BOOK DETAILS (conditional) ── -->
+    <div class="form-section conditional" id="section-book">
+      <div class="section-label">Book Details</div>
+      <div class="section-title">Tell Me About Your Book</div>
+      <div class="section-desc">Shown because you selected a book design service.</div>
+
+      <div class="field-group">
+        <label>What type of book? <span class="req">*</span></label>
+        <div class="radio-group">
+          <label class="radio-item">
+            <input type="radio" name="Book Type" value="Vacation Book"/>
+            <span>Vacation Book <small>13 spreads / ~22 pages — $420</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Book Type" value="Graduation Book"/>
+            <span>Graduation Book <small>18 spreads / ~26 pages — $510</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Book Type" value="Baby Book"/>
+            <span>Baby Book <small>28 spreads / ~42 pages — $770</small></span>
+          </label>
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="field-group">
+        <label>Are you interested in any enhancements?</label>
+        <div class="check-group">
+          <label class="check-item">
+            <input type="checkbox" name="Enhancement: Extra Photo Spread" value="Yes"/>
+            <span>Extra Photo Spread <small>2 additional pages per spread — $25 each</small></span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Enhancement: Roots & Reflection Spread" value="Yes"/>
+            <span>Roots &amp; Reflection Spread <small>Typeset letter + 1–3 hero portraits — $25</small></span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Enhancement: Additional Letters" value="Yes"/>
+            <span>Additional Letters <small>Extra voices (grandparents, siblings, coaches) — $15 each</small></span>
+          </label>
+          <label class="check-item">
+            <input type="checkbox" name="Enhancement: The Narrative Edit" value="Yes"/>
+            <span>The Narrative Edit <small>Short reflections woven throughout — $50</small></span>
+          </label>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Approximate number of extra photo spreads you're considering?</label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Extra Spreads Interest" value="Yes" onclick="document.getElementById('spreads-field').classList.add('visible')"/>
+            <span>Yes, I have a number in mind</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Extra Spreads Interest" value="No" onclick="document.getElementById('spreads-field').classList.remove('visible')"/>
+            <span>Not sure yet</span>
+          </label>
+        </div>
+        <div class="sub-field" id="spreads-field">
+          <label>How many extra spreads?</label>
+          <input type="number" name="Extra Spreads Count" min="1" max="20" placeholder="e.g. 2"/>
+          <small style="font-size:11px;color:var(--text-light);margin-top:4px;display:block;">1 spread = 2 pages</small>
+        </div>
+      </div>
+
+      <div class="field-group">
+        <label>Approximate number of additional letters?</label>
+        <div class="radio-group inline">
+          <label class="radio-item">
+            <input type="radio" name="Extra Letters Interest" value="Yes" onclick="document.getElementById('letters-field').classList.add('visible')"/>
+            <span>Yes, I have a number in mind</span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Extra Letters Interest" value="No" onclick="document.getElementById('letters-field').classList.remove('visible')"/>
+            <span>Not sure yet</span>
+          </label>
+        </div>
+        <div class="sub-field" id="letters-field">
+          <label>How many additional letters?</label>
+          <input type="number" name="Extra Letters Count" min="1" max="10" placeholder="e.g. 2"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── ANYTHING ELSE ── -->
+    <div class="form-section">
+      <div class="section-label">Step 03</div>
+      <div class="section-title">Anything Else?</div>
+      <div class="section-desc">A special occasion, a story you want to share, or a question you have.</div>
+
+      <div class="field-group">
+        <label>Notes or questions</label>
+        <textarea name="Notes" placeholder="Share anything that would help me understand your project..."></textarea>
+      </div>
+    </div>
+
+    <!-- ── SUBMIT ── -->
+    <div class="submit-wrap">
+      <button type="submit">Let's Get Started</button>
+      <p class="submit-note">I'll be in touch within 2 business days. No spam, ever.</p>
+    </div>
+
+  </form>
+
+  <!-- Success message (shown after submit if staying on page) -->
+  <div id="success-msg">
+    <h2>Thank you, <em>so much.</em></h2>
+    <p>Your inquiry has been received. I'll be in touch within 2 business days to talk through your project and next steps.</p>
+  </div>
+</main>
+
+<footer>
+  <a href="https://memoryorchardstudio.wixsite.com/orchard">← Back to Memory Orchard Studio</a>
+  &nbsp;&nbsp;·&nbsp;&nbsp;
+  © 2026 Memory Orchard Studio
+</footer>
+
+<script>
+  // ── SERVICE SELECTION ──
+  function selectService(type, card) {
+    // Update radio
+    document.getElementById('svc-' + type).checked = true;
+
+    // Update card styles
+    document.querySelectorAll('.service-card').forEach(c => c.classList.remove('selected'));
+    card.classList.add('selected');
+
+    // Show/hide conditional sections
+    const showCuration = (type === 'curation' || type === 'both');
+    const showBook     = (type === 'book'     || type === 'both');
+
+    const sec = (id, show) => {
+      const el = document.getElementById(id);
+      el.classList.toggle('visible', show);
+      // Make fields required/unrequired based on visibility
+      el.querySelectorAll('[required]').forEach(f => f.required = show);
+    };
+
+    sec('section-curation', showCuration);
+    sec('section-book',     showBook);
+  }
+
+  // ── DEADLINE TOGGLE ──
+  function toggleDeadline(show) {
+    const el = document.getElementById('deadline-field');
+    el.classList.toggle('visible', show);
+    const input = el.querySelector('input');
+    input.required = show;
+  }
+</script>
+
+</body>
+</html>
