@@ -229,22 +229,8 @@
       </div>
 
       <hr class="divider"/>
-
-      <div class="field-group conditional" id="curation-bin-field">
-        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">+100 files, up to 1,300 total</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Bountiful Bin" value="Yes"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Bountiful Bin" value="No"/><span>No</span></label>
-        </div>
-      </div>
-
-<div class="field-group conditional" id="folder-org-field">
-        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Fruit Sorting" value="Yes"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Fruit Sorting" value="No"/><span>No</span></label>
-        </div>
-      </div>
+</div>
+</div>
     </div>
 
     <!-- BOOK DETAILS -->
@@ -356,31 +342,8 @@
           💛 That's totally fine — we'll figure it out together before anything is finalized.
         </div>
       </div>
-
-      <div class="field-group conditional" id="combo-bin-field">
-        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Each bin holds 100 additional files — max 1 for Harvest</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Yes" onchange="document.getElementById('combo-bin-qty').classList.add('visible')"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="No" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>No</span></label>
-        </div>
-        <div class="sub-field" id="combo-bin-qty">
-          <label>How many bins?</label>
-          <select name="Combo Bountiful Bin Quantity">
-            <option value="">Select...</option>
-            <option value="1">1 bin (+100 files)</option>
-            <option value="2" id="combo-bin-opt-2">2 bins (+200 files)</option>
-          </select>
-        </div>
       </div>
-      </div>
-
-      <div class="field-group conditional" id="combo-folder-org-field">
-        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Yes"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="No"/><span>No</span></label>
-        </div>
-      </div>
+</div>
     </div>
 
     <!-- STEP 3: NOTES -->
@@ -448,23 +411,14 @@
   function updateCurationTier(tier) {
     document.getElementById('tip-split').classList.toggle('visible', tier === 'split');
     document.getElementById('tip-unsure').classList.toggle('visible', tier === 'unsure');
-    document.getElementById('folder-org-field').classList.toggle('visible', tier === 'seedling');
     var curationBin = document.getElementById('curation-bin-field');
     if (curationBin) curationBin.classList.toggle('visible', tier === 'harvest');
 
     // Harvest: disable 2nd bin option
-    var binOpt2 = document.getElementById('bin-opt-2');
-    if (binOpt2) binOpt2.disabled = (tier === 'harvest');
   }
 
   function updateComboTier(tier) {
     document.getElementById('tip-combo-unsure').classList.toggle('visible', tier === 'unsure');
-    // Fruit Sorting only for Seedling
-    var comboFruit = document.getElementById('combo-folder-org-field');
-    if (comboFruit) comboFruit.classList.toggle('visible', tier === 'seedling');
-    // Bountiful Bin only for Harvest
-    var comboBin = document.getElementById('combo-bin-field');
-    if (comboBin) comboBin.classList.toggle('visible', tier === 'harvest');
   }
 
   // Auto-suggest photo count when book type selected in combo
