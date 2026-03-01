@@ -230,30 +230,29 @@
       <hr class="divider"/>
 
       <div class="field-group">
-        <label>Are you interested in Bountiful Bin?</label>
+        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Each bin holds 100 additional files</span></label>
         <div class="radio-group inline">
           <label class="radio-item"><input type="radio" name="Bountiful Bin" value="Yes" onchange="document.getElementById('bin-qty').classList.add('visible')"/><span>Yes</span></label>
           <label class="radio-item"><input type="radio" name="Bountiful Bin" value="No" onchange="document.getElementById('bin-qty').classList.remove('visible')"/><span>No</span></label>
           <label class="radio-item"><input type="radio" name="Bountiful Bin" value="Tell me more" onchange="document.getElementById('bin-qty').classList.remove('visible')"/><span>Tell me more</span></label>
         </div>
         <div class="sub-field" id="bin-qty">
-          <label>How many? <span id="bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
+          <label>How many bins? <span id="bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
           <select name="Bountiful Bin Quantity">
             <option value="">Select...</option>
-            <option value="1">1</option>
-            <option value="2" id="bin-opt-2">2</option>
+            <option value="1">1 bin (+100 files)</option>
+            <option value="2" id="bin-opt-2">2 bins (+200 files)</option>
           </select>
         </div>
       </div>
 
       <div class="field-group conditional" id="folder-org-field">
-        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(Seedling only)</span></label>
+        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
         <div class="radio-group inline">
           <label class="radio-item"><input type="radio" name="Fruit Sorting" value="Yes"/><span>Yes</span></label>
           <label class="radio-item"><input type="radio" name="Fruit Sorting" value="No"/><span>No</span></label>
           <label class="radio-item"><input type="radio" name="Fruit Sorting" value="Tell me more"/><span>Tell me more</span></label>
         </div>
-        <span class="helper-text">Your memories organized into a clean, navigable folder system.</span>
       </div>
     </div>
 
@@ -261,22 +260,22 @@
     <div class="form-section conditional" id="section-combo-photos">
       <div class="section-label">Your Collection</div>
       <div class="section-title">Tell Me About Your Photos</div>
-      <div class="section-desc">Helps me pair the right curation tier with your book.</div>
+      <div class="section-desc">Helps me pair the right curation tier with your book. I've pre-selected a starting point based on your book type — adjust if needed.</div>
 
       <div class="field-group">
         <label>Approximately how many photos are in this collection? <span class="req">*</span></label>
-        <div class="radio-group">
+        <div class="radio-group" id="combo-photo-radios">
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="Under 400" onchange="updateComboTier('seedling')"/>
-            <span>Under 400 <small>Will pair with Seedling Curation</small></span>
+            <span>Under 400 <small>Pairs with Seedling Curation</small></span>
           </label>
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="401-800" onchange="updateComboTier('orchard')"/>
-            <span>400–800 <small>Will pair with Orchard Curation</small></span>
+            <span>400–800 <small>Pairs with Orchard Curation</small></span>
           </label>
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="801-1200" onchange="updateComboTier('harvest')"/>
-            <span>800–1,200 <small>Will pair with Harvest Curation</small></span>
+            <span>800–1,200 <small>Pairs with Harvest Curation</small></span>
           </label>
           <label class="radio-item">
             <input type="radio" name="Photo Count" value="Not sure" onchange="updateComboTier('unsure')"/>
@@ -285,6 +284,34 @@
         </div>
         <div class="info-tip" id="tip-combo-unsure">
           💛 That's totally fine — we'll figure it out together before anything is finalized.
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="field-group">
+        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Each bin holds 100 additional files</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Yes" onchange="document.getElementById('combo-bin-qty').classList.add('visible')"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="No" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Tell me more" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>Tell me more</span></label>
+        </div>
+        <div class="sub-field" id="combo-bin-qty">
+          <label>How many bins? <span id="combo-bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
+          <select name="Combo Bountiful Bin Quantity">
+            <option value="">Select...</option>
+            <option value="1">1 bin (+100 files)</option>
+            <option value="2" id="combo-bin-opt-2">2 bins (+200 files)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group conditional" id="combo-folder-org-field">
+        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Yes"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="No"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Tell me more"/><span>Tell me more</span></label>
         </div>
       </div>
     </div>
@@ -299,15 +326,15 @@
         <label>What type of book?</label>
         <div class="radio-group">
           <label class="radio-item">
-            <input type="radio" name="Book Type" value="Vacation Book"/>
+            <input type="radio" name="Book Type" value="Vacation Book" onchange="autoSuggestPhotoCount(this.value)"/>
             <span>Vacation Book <small>Highlights the best moments from your trip</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Book Type" value="Baby First Year Book"/>
+            <input type="radio" name="Book Type" value="Baby First Year Book" onchange="autoSuggestPhotoCount(this.value)"/>
             <span>Baby First Year Book <small>Monthly &amp; milestone-focused</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Book Type" value="Graduation Book"/>
+            <input type="radio" name="Book Type" value="Graduation Book" onchange="autoSuggestPhotoCount(this.value)"/>
             <span>Graduation Book <small>A keepsake celebrating achievements and the story behind them</small></span>
           </label>
         </div>
@@ -448,6 +475,28 @@
 
   function updateComboTier(tier) {
     document.getElementById('tip-combo-unsure').classList.toggle('visible', tier === 'unsure');
+    // Fruit Sorting only for Seedling tier combos
+    var comboFruit = document.getElementById('combo-folder-org-field');
+    if (comboFruit) comboFruit.classList.toggle('visible', tier === 'seedling');
+    // Update max bins note for harvest
+    var comboBinNote = document.getElementById('combo-bin-max-note');
+    var comboBinOpt2 = document.getElementById('combo-bin-opt-2');
+    if (comboBinNote) comboBinNote.textContent = tier === 'harvest' ? '(max 1 for Harvest)' : '(max 2 for Seedling/Orchard)';
+    if (comboBinOpt2) comboBinOpt2.disabled = (tier === 'harvest');
+  }
+
+  // Auto-suggest photo count when book type selected in combo
+  function autoSuggestPhotoCount(bookType) {
+    // Vacation/Graduation → suggest Seedling (Under 400)
+    // Baby → suggest Orchard (401-800)
+    var suggestedValue = bookType === 'Baby First Year Book' ? '401-800' : 'Under 400';
+    var radios = document.querySelectorAll('#combo-photo-radios input[type="radio"]');
+    radios.forEach(function(r) {
+      if (r.value === suggestedValue) {
+        r.checked = true;
+        r.dispatchEvent(new Event('change'));
+      }
+    });
   }
 
   document.querySelectorAll('input[name="Has Deadline"]').forEach(function(radio) {
@@ -462,19 +511,23 @@
 
   document.getElementById('inquiry-form').addEventListener('submit', function(e) {
     e.preventDefault();
+    var form = this;
     var btn = document.getElementById('submit-btn');
     btn.disabled = true;
     btn.textContent = 'Sending...';
 
+    var formData = new FormData(form);
+
     fetch(SCRIPT_URL, {
       method: 'POST',
-      body: new FormData(this),
+      body: formData,
       mode: 'no-cors'
     }).then(function() {
-      document.getElementById('inquiry-form').style.display = 'none';
+      form.style.display = 'none';
       document.getElementById('success-msg').style.display = 'block';
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }).catch(function() {
+    }).catch(function(err) {
+      console.error('Submit error:', err);
       btn.disabled = false;
       btn.textContent = "Let's Get Started";
       alert('Something went wrong. Please try again or email memoryorchardstudio@gmail.com directly.');
