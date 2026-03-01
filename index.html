@@ -256,66 +256,6 @@
       </div>
     </div>
 
-    <!-- FULL ORCHARD PHOTO COUNT -->
-    <div class="form-section conditional" id="section-combo-photos">
-      <div class="section-label">Your Collection</div>
-      <div class="section-title">Tell Me About Your Photos</div>
-      <div class="section-desc">Helps me pair the right curation tier with your book. I've pre-selected a starting point based on your book type — adjust if needed.</div>
-
-      <div class="field-group">
-        <label>Approximately how many photos are in this collection? <span class="req">*</span></label>
-        <div class="radio-group" id="combo-photo-radios">
-          <label class="radio-item">
-            <input type="radio" name="Photo Count" value="Under 400" onchange="updateComboTier('seedling')"/>
-            <span>Under 400 <small>Pairs with Seedling Curation</small></span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Photo Count" value="401-800" onchange="updateComboTier('orchard')"/>
-            <span>400–800 <small>Pairs with Orchard Curation</small></span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Photo Count" value="801-1200" onchange="updateComboTier('harvest')"/>
-            <span>800–1,200 <small>Pairs with Harvest Curation</small></span>
-          </label>
-          <label class="radio-item">
-            <input type="radio" name="Photo Count" value="Not sure" onchange="updateComboTier('unsure')"/>
-            <span>Not sure yet</span>
-          </label>
-        </div>
-        <div class="info-tip" id="tip-combo-unsure">
-          💛 That's totally fine — we'll figure it out together before anything is finalized.
-        </div>
-      </div>
-
-      <hr class="divider"/>
-
-      <div class="field-group">
-        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Each bin holds 100 additional files</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Yes" onchange="document.getElementById('combo-bin-qty').classList.add('visible')"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="No" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>No</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Tell me more" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>Tell me more</span></label>
-        </div>
-        <div class="sub-field" id="combo-bin-qty">
-          <label>How many bins? <span id="combo-bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
-          <select name="Combo Bountiful Bin Quantity">
-            <option value="">Select...</option>
-            <option value="1">1 bin (+100 files)</option>
-            <option value="2" id="combo-bin-opt-2">2 bins (+200 files)</option>
-          </select>
-        </div>
-      </div>
-
-      <div class="field-group conditional" id="combo-folder-org-field">
-        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
-        <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Yes"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="No"/><span>No</span></label>
-          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Tell me more"/><span>Tell me more</span></label>
-        </div>
-      </div>
-    </div>
-
     <!-- BOOK DETAILS -->
     <div class="form-section conditional" id="section-book">
       <div class="section-label">Book Details</div>
@@ -392,6 +332,66 @@
       <div class="warm-note">
         <strong>✦ A note on enhancements</strong>
         Not sure what you want yet? That's completely okay — your initial invoice will be an estimate and we'll finalize everything together. I'm happy to help you decide what fits your story best.
+      </div>
+    </div>
+
+    <!-- FULL ORCHARD PHOTO COUNT -->
+    <div class="form-section conditional" id="section-combo-photos">
+      <div class="section-label">Your Collection</div>
+      <div class="section-title">Tell Me About Your Photos</div>
+      <div class="section-desc">Helps me pair the right curation tier with your book. I've pre-selected a starting point based on your book type — adjust if needed.</div>
+
+      <div class="field-group">
+        <label>Approximately how many photos are in this collection? <span class="req">*</span></label>
+        <div class="radio-group" id="combo-photo-radios">
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="Under 400" onchange="updateComboTier('seedling')"/>
+            <span>Under 400 <small>Pairs with Seedling Curation</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="401-800" onchange="updateComboTier('orchard')"/>
+            <span>400–800 <small>Pairs with Orchard Curation</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="801-1200" onchange="updateComboTier('harvest')"/>
+            <span>800–1,200 <small>Pairs with Harvest Curation</small></span>
+          </label>
+          <label class="radio-item">
+            <input type="radio" name="Photo Count" value="Not sure" onchange="updateComboTier('unsure')"/>
+            <span>Not sure yet</span>
+          </label>
+        </div>
+        <div class="info-tip" id="tip-combo-unsure">
+          💛 That's totally fine — we'll figure it out together before anything is finalized.
+        </div>
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="field-group">
+        <label>Are you interested in Bountiful Bin? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Each bin holds 100 additional files</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Yes" onchange="document.getElementById('combo-bin-qty').classList.add('visible')"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="No" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Bountiful Bin" value="Tell me more" onchange="document.getElementById('combo-bin-qty').classList.remove('visible')"/><span>Tell me more</span></label>
+        </div>
+        <div class="sub-field" id="combo-bin-qty">
+          <label>How many bins? <span id="combo-bin-max-note" style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(max 2 for Seedling/Orchard; max 1 for Harvest)</span></label>
+          <select name="Combo Bountiful Bin Quantity">
+            <option value="">Select...</option>
+            <option value="1">1 bin (+100 files)</option>
+            <option value="2" id="combo-bin-opt-2">2 bins (+200 files)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="field-group conditional" id="combo-folder-org-field">
+        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;font-weight:400;">Your photos organized into a clean, navigable folder system — Seedling only</span></label>
+        <div class="radio-group inline">
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Yes"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="No"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Combo Fruit Sorting" value="Tell me more"/><span>Tell me more</span></label>
+        </div>
       </div>
     </div>
 
