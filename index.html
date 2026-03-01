@@ -247,13 +247,13 @@
       </div>
 
       <div class="field-group conditional" id="folder-org-field">
-        <label>Are you interested in Upload-Ready Folder Organization?</label>
+        <label>Are you interested in Fruit Sorting? <span style="font-size:10px;color:var(--text-light);text-transform:none;letter-spacing:0;">(Seedling only)</span></label>
         <div class="radio-group inline">
-          <label class="radio-item"><input type="radio" name="Folder Organization" value="Yes"/><span>Yes</span></label>
-          <label class="radio-item"><input type="radio" name="Folder Organization" value="No"/><span>No</span></label>
-          <label class="radio-item"><input type="radio" name="Folder Organization" value="Tell me more"/><span>Tell me more</span></label>
+          <label class="radio-item"><input type="radio" name="Fruit Sorting" value="Yes"/><span>Yes</span></label>
+          <label class="radio-item"><input type="radio" name="Fruit Sorting" value="No"/><span>No</span></label>
+          <label class="radio-item"><input type="radio" name="Fruit Sorting" value="Tell me more"/><span>Tell me more</span></label>
         </div>
-        <span class="helper-text">Included in Orchard &amp; Harvest — available as an add-on for Seedling only.</span>
+        <span class="helper-text">Your memories organized into a clean, navigable folder system.</span>
       </div>
     </div>
 
@@ -406,8 +406,8 @@
     document.querySelectorAll('.service-card').forEach(function(c) { c.classList.remove('selected'); });
     card.classList.add('selected');
     document.getElementById('service-hidden').value =
-      type === 'curation' ? 'Photo Curation' :
-      type === 'book'     ? 'Book Design' : 'Both — Curation + Book';
+      type === 'curation' ? 'Photo Curation Only' :
+      type === 'book'     ? 'Book Design Only' : 'Both — Curation + Book';
 
     var sc = document.getElementById('section-curation');
     var sb = document.getElementById('section-book');
