@@ -260,50 +260,57 @@
       <hr class="divider"/>
 
       <div class="field-group">
-        <label>Are you interested in enhancing your book with any of the following?</label>
+        <label>Are you interested in enhancing your book?</label>
+
         <div class="check-group">
           <label class="check-item">
             <input type="checkbox" name="Enhancement: Extra Photo Spread" value="Yes" onchange="toggleSubCount('spreads-field', this.checked)"/>
             <span>Extra photo spreads <small>For fuller chapters</small></span>
           </label>
+          <div class="sub-field" id="spreads-field">
+            <label>How many extra spreads?</label>
+            <select name="Extra Spreads Count">
+              <option value="">Select...</option>
+              <option value="1">1 spread</option>
+              <option value="2">2 spreads</option>
+              <option value="3">3 spreads</option>
+              <option value="4">4 spreads</option>
+              <option value="5">5 spreads</option>
+            </select>
+            <span class="helper-text">1 spread = 2 pages — we can always adjust together.</span>
+          </div>
+        </div>
+
+        <div class="check-group">
           <label class="check-item">
-            <input type="checkbox" name="Enhancement: Roots and Reflection Spread" value="Yes"/>
-            <span>A Roots &amp; Reflection spread <small>Letter + portraits</small></span>
+            <input type="checkbox" name="Enhancement: Roots and Reflection Spread" value="Yes" onchange="toggleSubCount('letters-field', this.checked); toggleSubCount('letters-count-field', false);"/>
+            <span>A Roots &amp; Reflection spread <small>Typeset letter + 1–3 featured portraits, or up to 2 letters without photos</small></span>
           </label>
-          <label class="check-item">
-            <input type="checkbox" name="Enhancement: Additional Letters" value="Yes" onchange="toggleSubCount('letters-field', this.checked)"/>
-            <span>Additional letters <small>Grandparents, siblings, coaches</small></span>
-          </label>
+          <div class="sub-field" id="letters-field">
+            <label class="check-item">
+              <input type="checkbox" name="Enhancement: Additional Letters" value="Yes" onchange="toggleSubCount('letters-count-field', this.checked)"/>
+              <span>Additional letters <small>Grandparents, siblings, coaches</small></span>
+            </label>
+            <div class="sub-field" id="letters-count-field">
+              <label>How many additional letters?</label>
+              <select name="Extra Letters Count">
+                <option value="">Select...</option>
+                <option value="1">1 letter</option>
+                <option value="2">2 letters</option>
+                <option value="3">3 letters</option>
+                <option value="4">4 letters</option>
+                <option value="5">5 letters</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="check-group">
           <label class="check-item">
             <input type="checkbox" name="Enhancement: The Narrative Edit" value="Yes"/>
             <span>Narrative reflections woven throughout</span>
           </label>
         </div>
-      </div>
-
-      <div class="sub-field" id="spreads-field">
-        <label>How many extra spreads?</label>
-        <select name="Extra Spreads Count">
-          <option value="">Select...</option>
-          <option value="1">1 spread</option>
-          <option value="2">2 spreads</option>
-          <option value="3">3 spreads</option>
-          <option value="4">4 spreads</option>
-          <option value="5">5 spreads</option>
-        </select>
-        <span class="helper-text">1 spread = 2 pages — we can always adjust together.</span>
-      </div>
-
-      <div class="sub-field" id="letters-field">
-        <label>How many additional letters?</label>
-        <select name="Extra Letters Count">
-          <option value="">Select...</option>
-          <option value="1">1 letter</option>
-          <option value="2">2 letters</option>
-          <option value="3">3 letters</option>
-          <option value="4">4 letters</option>
-          <option value="5">5 letters</option>
-        </select>
       </div>
 
       <div class="warm-note">
