@@ -346,10 +346,19 @@
             <input type="radio" name="Photo Count" value="Not sure" onchange="updateComboTier('unsure')"/>
             <span>Not sure yet</span>
           </label>
+          <label class="radio-item">
+          <input type="radio" name="Photo Count" value="1200+" onchange="updateComboTier('split')"/>
+         <span>Over 1,200 files</span>
+           </label>
         </div>
         <div class="info-tip" id="tip-combo-unsure">
           💛 That's totally fine — we'll figure it out together before anything is finalized.
         </div>
+        <div class="info-tip" id="tip-combo-split">
+  🌳 <strong>Your collection is beautifully large!</strong><br><br>
+  Collections over 1,200 images work best when approached in sessions — so the storytelling stays thoughtful and manageable.<br><br>
+  Just share your total in the notes and I'll help you decide the best way forward.
+</div>
       </div>
       </div>
 </div>
@@ -439,8 +448,9 @@
   }
 
   function updateComboTier(tier) {
-    document.getElementById('tip-combo-unsure').classList.toggle('visible', tier === 'unsure');
-  }
+  document.getElementById('tip-combo-unsure').classList.toggle('visible', tier === 'unsure');
+  document.getElementById('tip-combo-split').classList.toggle('visible', tier === 'split');
+}
 
   // Auto-suggest photo count when book type selected in combo
   function autoSuggestPhotoCount(bookType) {
