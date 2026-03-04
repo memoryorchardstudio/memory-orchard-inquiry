@@ -428,7 +428,7 @@
   function updateCurationTier(tier) {
     document.getElementById('tip-split').classList.toggle('visible', tier === 'split');
     var helper = document.getElementById('flex-helper');
-if (helper) helper.style.display = tier === 'split' ? 'none' : '';
+    if (helper) helper.style.display = tier === 'split' ? 'none' : '';
     document.getElementById('tip-unsure').classList.toggle('visible', tier === 'unsure');
     var curationBin = document.getElementById('curation-bin-field');
     if (curationBin) curationBin.classList.toggle('visible', tier === 'harvest');
