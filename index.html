@@ -209,7 +209,7 @@
             <span>801–1,200 files <small>Harvest Curation</small></span>
           </label>
           <label class="radio-item">
-            <input type="radio" name="Photo Count" value="1200+" onchange="updateCurationTier('split')"/>
+            <input type="radio" name="Photo Count" value="1200+" onchange="updateCurationTier('split'); scrollToNotes();"/>
             <span>Over 1,200 files</span>
           </label>
           <label class="radio-item">
@@ -219,7 +219,7 @@
         </div>
 
         <div class="info-tip" id="tip-split">
-          🌳 Your collection is beautifully large! Over 1,200 files requires two separate inquiries — one per session. A good starting point: figure out your total, then split it roughly in half between two tiers. Not sure how to split? Drop a note below and I'll reach out to help before you submit the second inquiry.
+          🌳 Your collection is beautifully large! Share your total in the notes below and I'll help you decide the best way to approach it.
         </div>
 
         <div class="info-tip" id="tip-unsure">
@@ -414,6 +414,14 @@
 
     if (type !== 'curation') updateCurationTier(null);
   }
+
+  function scrollToNotes() {
+  var notes = document.querySelector('textarea[name="Notes"]');
+  if (notes) {
+    notes.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    notes.placeholder = 'Share your total photo count here — I\'ll reach out to help figure out the best approach together.';
+  }
+}
 
   function updateCurationTier(tier) {
     document.getElementById('tip-split').classList.toggle('visible', tier === 'split');
