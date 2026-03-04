@@ -225,7 +225,7 @@
         <div class="info-tip" id="tip-unsure">
           💛 No worries at all — a rough estimate is totally fine. I'll walk you through a quick count before we finalize anything, and we can always adjust your tier together.
         </div>
-        <span class="helper-text">Have an exact count? Drop it in the notes — tiers have a little flex built in for those right-on-the-line collections.</span>
+     <span class="helper-text" id="flex-helper">Have an exact count? Drop it in the notes — tiers have a little flex built in for those right-on-the-line collections.</span>
       </div>
 
       <hr class="divider"/>
@@ -415,16 +415,20 @@
     if (type !== 'curation') updateCurationTier(null);
   }
 
-  function scrollToNotes() {
+ function scrollToNotes() {
   var notes = document.querySelector('textarea[name="Notes"]');
   if (notes) {
     notes.scrollIntoView({ behavior: 'smooth', block: 'center' });
     notes.placeholder = 'Share your total photo count here — I\'ll reach out to help figure out the best approach together.';
   }
+  var helper = document.getElementById('flex-helper');
+  if (helper) helper.style.display = 'none';
 }
 
   function updateCurationTier(tier) {
     document.getElementById('tip-split').classList.toggle('visible', tier === 'split');
+    var helper = document.getElementById('flex-helper');
+if (helper) helper.style.display = tier === 'split' ? 'none' : '';
     document.getElementById('tip-unsure').classList.toggle('visible', tier === 'unsure');
     var curationBin = document.getElementById('curation-bin-field');
     if (curationBin) curationBin.classList.toggle('visible', tier === 'harvest');
