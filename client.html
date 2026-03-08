@@ -813,7 +813,7 @@ function renderPortal(data) {
 
 /* ─── FETCH VIA JSONP (unique callback, no cookie requirement) ── */
 function fetchPortal(inv, key) {
-  const cbName = 'portalReady_' + Date.now();
+  const cbName = 'portalReady' + Date.now();
 
   const timer = setTimeout(() => {
     hide('state-loading');
