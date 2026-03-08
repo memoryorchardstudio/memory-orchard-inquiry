@@ -584,264 +584,167 @@
 </div><!-- /page -->
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-/* ─── CONFIG ─────────────────────────────────────────────────────
-   Replace APPS_SCRIPT_URL with your deployed /exec URL.
-──────────────────────────────────────────────────────────────── */
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQ8UO1NHjQzyvrNk9TkMvp9hmL9WiiUGanwlP1SpMyuChnGcI2jf2zZrNZDpcYDHaH/exec';
 
 /* ─── BUTTON DEFINITIONS ─────────────────────────────────────── */
 const BTN_DEFS = [
-  // { id, label, sub, icon, theme, section: 'start'|'progress'|'completion' }
-  {
-    id: 'pay_deposit',
-    label: 'Pay Deposit',
-    sub: '50% to reserve your start date',
-    icon: '💳',
-    theme: 'btn-gold',
-    section: 'start',
-  },
-  {
-    id: 'sign_agreement',
-    label: 'Sign Agreement',
-    sub: 'Review and sign your project agreement',
-    icon: '✍️',
-    theme: 'btn-bark',
-    section: 'start',
-  },
-  {
-    id: 'upload_photos',
-    label: 'Upload Your Photos',
-    sub: 'Share your collection via Google Drive',
-    icon: '📁',
-    theme: 'btn-sage',
-    section: 'start',
-  },
-  {
-    id: 'questionnaire',
-    label: 'Complete Questionnaire',
-    sub: 'Tell me your story, preferences & shipping address',
-    icon: '📝',
-    theme: 'btn-blue',
-    section: 'start',
-  },
-  {
-    id: 'draft1',
-    label: 'View Draft 1',
-    sub: 'Your first design proof is ready',
-    icon: '🌿',
-    theme: 'btn-moss',
-    section: 'progress',
-  },
-  {
-    id: 'draft2',
-    label: 'View Draft 2',
-    sub: 'Revised design based on your feedback',
-    icon: '🌳',
-    theme: 'btn-moss',
-    section: 'progress',
-  },
-  {
-    id: 'pay_balance',
-    label: 'Pay Remaining Balance',
-    sub: 'Final step before your book goes to print',
-    icon: '🎉',
-    theme: 'btn-amber',
-    section: 'completion',
-  },
+  { id: 'pay_deposit',    label: 'Pay Deposit',             sub: '50% to reserve your start date',                    icon: '💳', theme: 'btn-gold',  section: 'start' },
+  { id: 'sign_agreement', label: 'Sign Agreement',          sub: 'Review and sign your project agreement',            icon: '✍️', theme: 'btn-bark',  section: 'start' },
+  { id: 'upload_photos',  label: 'Upload Your Photos',      sub: 'Share your collection via Google Drive',            icon: '📁', theme: 'btn-sage',  section: 'start' },
+  { id: 'questionnaire',  label: 'Complete Questionnaire',  sub: 'Tell me your story, preferences & shipping address',icon: '📝', theme: 'btn-blue',  section: 'start' },
+  { id: 'draft1',         label: 'View Draft 1',            sub: 'Your first design proof is ready',                  icon: '🌿', theme: 'btn-moss',  section: 'progress' },
+  { id: 'draft2',         label: 'View Draft 2',            sub: 'Revised design based on your feedback',             icon: '🌳', theme: 'btn-moss',  section: 'progress' },
+  { id: 'pay_balance',    label: 'Pay Remaining Balance',   sub: 'Final step before your book goes to print',         icon: '🎉', theme: 'btn-amber', section: 'completion' },
 ];
 
-/* ─── PROGRESS STEP DEFINITIONS ──────────────────────────────── */
 const PROGRESS_DEFS = [
-  { key: 'deposit',    label: 'Deposit',    icon: '✓' },
-  { key: 'agreement',  label: 'Agreement',  icon: '✓' },
-  { key: 'photos',     label: 'Photos',     icon: '✓' },
-  { key: 'design',     label: 'Design',     icon: '✓' },
-  { key: 'payment',    label: 'Payment',    icon: '✓' },
-  { key: 'print',      label: 'Print',      icon: '✓' },
+  { key: 'deposit',   label: 'Deposit' },
+  { key: 'agreement', label: 'Agreement' },
+  { key: 'photos',    label: 'Photos' },
+  { key: 'design',    label: 'Design' },
+  { key: 'payment',   label: 'Payment' },
+  { key: 'print',     label: 'Print' },
 ];
 
-/* ─── STATUS → PROGRESS STAGE MAP ────────────────────────────── */
-// Map portal STATUS cell values → which progress step is "active"
 const STATUS_STAGE = {
-  'Waiting for Deposit':         'deposit',
-  'Deposit Received':            'agreement',
-  'Waiting for Agreement':       'agreement',
-  'Agreement Signed':            'photos',
-  'Photos Pending':              'photos',
-  'Photos Received':             'design',
-  'Draft 1 in Progress':         'design',
-  'Draft 1 Ready':               'design',
-  'Draft 1 Sent':                'design',
-  'Draft 2 in Progress':         'design',
-  'Draft 2 Ready':               'design',
-  'Draft 2 Sent':                'design',
-  'Final Approval':              'payment',
-  'Balance Due':                 'payment',
-  'Final Payment Due':           'payment',
-  'Payment Received':            'print',
-  'Ordered':                     'print',
-  'Project Complete':            null,       // all done
+  'Waiting for Deposit':   'deposit',
+  'Deposit Received':      'agreement',
+  'Waiting for Agreement': 'agreement',
+  'Agreement Signed':      'photos',
+  'Photos Pending':        'photos',
+  'Photos Received':       'design',
+  'Draft 1 in Progress':   'design',
+  'Draft 1 Sent':          'design',
+  'Draft 2 in Progress':   'design',
+  'Draft 2 Sent':          'design',
+  'Final Approval':        'payment',
+  'Balance Due':           'payment',
+  'Final Payment Due':     'payment',
+  'Payment Received':      'print',
+  'Ordered':               'print',
+  'Project Complete':      null,
 };
 
-/* ─── UTILS ──────────────────────────────────────────────────── */
 function $(id) { return document.getElementById(id); }
-
-function fmtMoney(val) {
-  const n = parseFloat(val);
-  if (isNaN(n)) return '—';
-  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
-}
-
 function show(id) { $(id).style.display = ''; }
 function hide(id) { $(id).style.display = 'none'; }
 
-function stagger(sections) {
-  sections.forEach((el, i) => {
-    setTimeout(() => {
-      el.classList.add('visible');
-    }, i * 90);
+function fmtMoney(val) {
+  const n = parseFloat(val);
+  if (!n && n !== 0) return '—';
+  return '$' + n.toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 2 });
+}
+
+function stagger(els) {
+  els.forEach((el, i) => {
+    if (!el) return;
+    setTimeout(() => { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; }, i * 90);
   });
 }
 
-/* ─── BUILD PROGRESS BAR ─────────────────────────────────────── */
 function buildProgress(status) {
   const activeKey = STATUS_STAGE[status] ?? null;
   const allDone   = status === 'Project Complete';
   const stepsEl   = $('progress-steps');
   stepsEl.innerHTML = '';
-
-  const stepOrder = PROGRESS_DEFS.map(d => d.key);
-  const activeIdx = activeKey ? stepOrder.indexOf(activeKey) : (allDone ? stepOrder.length : 0);
+  const order     = PROGRESS_DEFS.map(d => d.key);
+  const activeIdx = activeKey ? order.indexOf(activeKey) : (allDone ? order.length : 0);
 
   PROGRESS_DEFS.forEach((def, i) => {
-    const div = document.createElement('div');
-    let cls = 'step';
-    if (allDone || i < activeIdx)  cls += ' done';
-    else if (i === activeIdx)      cls += ' active';
-    div.className = cls;
-
-    const isDone = allDone || i < activeIdx;
-    div.innerHTML = `
-      <div class="step-dot">${isDone ? '✓' : i + 1}</div>
-      <div class="step-name">${def.label}</div>
-    `;
+    const done   = allDone || i < activeIdx;
+    const active = !allDone && i === activeIdx;
+    const div    = document.createElement('div');
+    div.className = 'step' + (done ? ' done' : active ? ' active' : '');
+    div.innerHTML = `<div class="step-dot">${done ? '✓' : i + 1}</div><div class="step-name">${def.label}</div>`;
     stepsEl.appendChild(div);
   });
 }
 
-/* ─── BUILD BUTTONS ──────────────────────────────────────────── */
 function buildButtons(buttons) {
   const grids = { start: [], progress: [], completion: [] };
 
   BTN_DEFS.forEach(def => {
-    const data = buttons.find(b => b.id === def.id);
+    const data    = buttons.find(b => b.id === def.id);
     const enabled = data && data.enabled && data.url;
-    const grid = grids[def.section];
-
-    const a = document.createElement(enabled ? 'a' : 'div');
-    a.className = `btn ${def.theme}${enabled ? '' : ' btn-locked'}`;
-    if (enabled) {
-      a.href   = data.url;
-      a.target = '_blank';
-      a.rel    = 'noopener noreferrer';
-    }
-
-    a.innerHTML = `
+    const el      = document.createElement(enabled ? 'a' : 'div');
+    el.className  = 'btn ' + def.theme + (enabled ? '' : ' btn-locked');
+    if (enabled) { el.href = data.url; el.target = '_blank'; el.rel = 'noopener noreferrer'; }
+    el.innerHTML  = `
       <div class="btn-icon">${def.icon}</div>
       <div class="btn-text">
         <span class="btn-label">${def.label}</span>
         <span class="btn-sub">${def.sub}</span>
       </div>
-      ${enabled
-        ? '<span class="btn-arrow">→</span>'
-        : '<span class="lock-badge">Coming Soon</span>'}
-    `;
-    grid.push(a);
+      ${enabled ? '<span class="btn-arrow">→</span>' : '<span class="lock-badge">Coming Soon</span>'}`;
+    grids[def.section].push(el);
   });
 
-  // inject into DOM; hide whole section if all locked
-  ['start', 'progress', 'completion'].forEach(sKey => {
-    const gridEl   = $('grid-' + sKey);
-    const sectionEl = $('section-' + sKey);
-    const items = grids[sKey];
-
-    if (!items.length) { sectionEl.style.display = 'none'; return; }
-    items.forEach(el => gridEl.appendChild(el));
+  ['start','progress','completion'].forEach(s => {
+    const gridEl    = $('grid-' + s);
+    const sectionEl = $('section-' + s);
+    if (!grids[s].length) { sectionEl.style.display = 'none'; return; }
+    grids[s].forEach(el => gridEl.appendChild(el));
   });
 }
 
-/* ─── RENDER PORTAL ──────────────────────────────────────────── */
 function renderPortal(data) {
   hide('state-loading');
 
   if (!data || !data.ok) {
-    const msg = (data && data.error) ? data.error : 'Something went wrong.';
-    $('error-detail').textContent = msg;
+    $('error-detail').textContent = (data && data.error) ? data.error : 'Something went wrong.';
     show('state-error');
     return;
   }
 
-  // Client card
-  $('client-name').textContent    = data.client.name || 'Your Project';
-  $('client-project').textContent = data.project.title || '';
+  $('client-name').textContent    = data.client.name    || 'Your Project';
+  $('client-project').textContent = data.project.title  || '';
   $('status-pill').textContent    = data.project.status || 'In Progress';
+  $('fin-total').textContent      = fmtMoney(data.finance.total);
+  $('fin-deposit').textContent    = fmtMoney(data.finance.depositPaid || data.finance.depositDue);
+  $('fin-balance').textContent    = fmtMoney(data.finance.balanceDue);
 
-  // Finance
-  $('fin-total').textContent   = fmtMoney(data.finance.total);
-  $('fin-deposit').textContent = fmtMoney(
-    data.finance.depositPaid || data.finance.depositDue
-  );
-  $('fin-balance').textContent = fmtMoney(data.finance.balanceDue);
-
-  // Progress
   buildProgress(data.project.status);
-
-  // Buttons
   buildButtons(data.buttons || []);
 
-  // Show portal with stagger
   show('state-portal');
+
+  ['client-card','finance-strip','progress-wrap','section-start','section-progress','section-completion'].forEach(id => {
+    const el = $(id);
+    if (el) { el.style.transition = 'opacity .5s ease, transform .5s ease'; }
+  });
+
   stagger([
-    $('client-card'),
-    $('finance-strip'),
-    $('progress-wrap'),
-    $('section-start'),
-    $('section-progress'),
-    $('section-completion'),
+    $('client-card'), $('finance-strip'), $('progress-wrap'),
+    $('section-start'), $('section-progress'), $('section-completion')
   ]);
 }
 
-/* ─── FETCH VIA JSONP (unique callback, no cookie requirement) ── */
 function fetchPortal(inv, key) {
-  const cbName = 'portalReady' + Date.now();
-
-  const timer = setTimeout(() => {
-    hide('state-loading');
-    $('error-detail').textContent = 'The request timed out. Please refresh the page or reach out directly.';
-    show('state-error');
-    delete window[cbName];
-  }, 15000);
-
-  window[cbName] = (data) => {
-    clearTimeout(timer);
-    delete window[cbName];
+  window.portalReady = function(data) {
     renderPortal(data);
   };
 
-  const url = `${APPS_SCRIPT_URL}?inv=${encodeURIComponent(inv)}&key=${encodeURIComponent(key)}&callback=${cbName}`;
+  const url    = APPS_SCRIPT_URL + '?inv=' + encodeURIComponent(inv) + '&key=' + encodeURIComponent(key) + '&callback=portalReady';
   const script = document.createElement('script');
-  script.src = url;
-  script.onerror = () => {
-    clearTimeout(timer);
-    delete window[cbName];
+  script.src   = url;
+
+  script.onerror = function() {
     hide('state-loading');
-    $('error-detail').textContent = 'Unable to reach your project data. Please try again or contact Memory Orchard Studio directly.';
+    $('error-detail').textContent = 'Unable to reach your project data. Please try again or contact Memory Orchard Studio.';
     show('state-error');
   };
+
+  setTimeout(function() {
+    if ($('state-loading').style.display !== 'none') {
+      hide('state-loading');
+      $('error-detail').textContent = 'Request timed out. Please refresh or contact Memory Orchard Studio.';
+      show('state-error');
+    }
+  }, 15000);
+
   document.head.appendChild(script);
 }
 
-/* ─── INIT ───────────────────────────────────────────────────── */
 (function init() {
   const params = new URLSearchParams(window.location.search);
   const inv    = params.get('inv');
