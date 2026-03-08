@@ -273,9 +273,7 @@
       margin-bottom: 32px;
       opacity: 0;
       transform: translateY(12px);
-    }
-    .section.visible {
-      animation: fadeUp .5s var(--ease-out) forwards;
+      transition: opacity .5s ease, transform .5s ease;
     }
     .section-header {
       display: flex;
@@ -720,18 +718,28 @@ function renderPortal(data) {
 }
 
 function fetchPortal(inv, key) {
+  window.portalReady = function(data) {
+    renderPortal(data);
+  };
   const url = APPS_SCRIPT_URL 
     + '?inv=' + encodeURIComponent(inv) 
-    + '&key=' + encodeURIComponent(key);
-
-  fetch(url, { redirect: 'follow' })
-    .then(function(response) { return response.json(); })
-    .then(function(data) { renderPortal(data); })
-    .catch(function(err) {
+    + '&key=' + encodeURIComponent(key)
+    + '&callback=portalReady';
+  const script = document.createElement('script');
+  script.src = url;
+  script.onerror = function() {
+    hide('state-loading');
+    $('error-detail').textContent = 'Unable to reach your project. Please contact Memory Orchard Studio.';
+    show('state-error');
+  };
+  setTimeout(function() {
+    if ($('state-loading') && $('state-loading').style.display !== 'none') {
       hide('state-loading');
-      $('error-detail').textContent = 'Unable to reach your project. Please try again or contact Memory Orchard Studio.';
+      $('error-detail').textContent = 'Request timed out. Please refresh or contact Memory Orchard Studio.';
       show('state-error');
-    });
+    }
+  }, 15000);
+  document.head.appendChild(script);
 }
 
 (function init() {
