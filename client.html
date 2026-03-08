@@ -494,8 +494,8 @@
         The link may have expired or the project isn't set up yet.
         Reach out and I'll get it sorted quickly.
       </p>
-      <a class="error-link" href="mailto:hello@memoryorchardstudio.com">
-        hello@memoryorchardstudio.com
+      <a class="error-link" href="/cdn-cgi/l/email-protection#4028252c2c2f002d252d2f32392f32232821322433343524292f6e232f2d">
+        <span class="__cf_email__" data-cfemail="f9919c959596b9949c94968b80968b9a91988b9d8a8d8c9d9096d79a9694">[email&#160;protected]</span>
       </a>
     </div>
   </div>
@@ -575,7 +575,7 @@
       <span class="footer-brand">Memory Orchard Studio</span>
       <p class="footer-note">
         Questions? Reach out anytime at
-        <a href="mailto:hello@memoryorchardstudio.com">hello@memoryorchardstudio.com</a>.<br/>
+        <a href="/cdn-cgi/l/email-protection#a1c9c4cdcdcee1ccc4ccced3d8ced3c2c9c0d3c5d2d5d4c5c8ce8fc2cecc"><span class="__cf_email__" data-cfemail="0e666b6262614e636b63617c77617c6d666f7c6a7d7a7b6a6761206d6163">[email&#160;protected]</span></a>.<br/>
         This page always has your latest links — no need to hunt through emails.
       </p>
     </footer>
@@ -583,13 +583,11 @@
   </div><!-- /state-portal -->
 </div><!-- /page -->
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 /* ─── CONFIG ─────────────────────────────────────────────────────
    Replace APPS_SCRIPT_URL with your deployed /exec URL.
-   Leave JSONP_CALLBACK as-is.
 ──────────────────────────────────────────────────────────────── */
 const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzQ8UO1NHjQzyvrNk9TkMvp9hmL9WiiUGanwlP1SpMyuChnGcI2jf2zZrNZDpcYDHaH/exec';
-const JSONP_CALLBACK  = 'portalReady';
 
 /* ─── BUTTON DEFINITIONS ─────────────────────────────────────── */
 const BTN_DEFS = [
@@ -813,34 +811,33 @@ function renderPortal(data) {
   ]);
 }
 
-/* ─── FETCH VIA JSONP ────────────────────────────────────────── */
+/* ─── FETCH VIA JSONP (unique callback, no cookie requirement) ── */
 function fetchPortal(inv, key) {
-  // expose callback globally
-  window[JSONP_CALLBACK] = renderPortal;
+  const cbName = 'portalReady_' + Date.now();
 
-  const url = `${APPS_SCRIPT_URL}?inv=${encodeURIComponent(inv)}&key=${encodeURIComponent(key)}&callback=${JSONP_CALLBACK}`;
-
-  const script = document.createElement('script');
-  script.src   = url;
-  script.onerror = () => {
-    hide('state-loading');
-    $('error-detail').textContent = 'Unable to reach the server. Please try again or contact me directly.';
-    show('state-error');
-  };
-
-  // timeout safety
   const timer = setTimeout(() => {
     hide('state-loading');
-    $('error-detail').textContent = 'The request timed out. Please refresh or reach out.';
+    $('error-detail').textContent = 'The request timed out. Please refresh the page or reach out directly.';
     show('state-error');
-  }, 12000);
+    delete window[cbName];
+  }, 15000);
 
-  const origCallback = window[JSONP_CALLBACK];
-  window[JSONP_CALLBACK] = (data) => {
+  window[cbName] = (data) => {
     clearTimeout(timer);
-    origCallback(data);
+    delete window[cbName];
+    renderPortal(data);
   };
 
+  const url = `${APPS_SCRIPT_URL}?inv=${encodeURIComponent(inv)}&key=${encodeURIComponent(key)}&callback=${cbName}`;
+  const script = document.createElement('script');
+  script.src = url;
+  script.onerror = () => {
+    clearTimeout(timer);
+    delete window[cbName];
+    hide('state-loading');
+    $('error-detail').textContent = 'Unable to reach your project data. Please try again or contact Memory Orchard Studio directly.';
+    show('state-error');
+  };
   document.head.appendChild(script);
 }
 
@@ -854,27 +851,6 @@ function fetchPortal(inv, key) {
     hide('state-loading');
     $('error-detail').textContent = 'No project link detected. Please use the full link sent to you by Memory Orchard Studio.';
     show('state-error');
-    return;
-  }
-
-  // If URL not set yet, show demo mode
-  if (APPS_SCRIPT_URL === 'YOUR_APPS_SCRIPT_EXEC_URL_HERE') {
-    renderPortal({
-      ok: true,
-      inv: inv,
-      client: { name: 'Sarah Johnson', email: '' },
-      project: { title: 'Full Orchard — Vacation + Seedling', status: 'Photos Pending', lastUpdated: '' },
-      finance: { total: 609.99, depositDue: 305, depositPaid: 305, balanceDue: 304.99 },
-      buttons: [
-        { id: 'pay_deposit',    enabled: false, url: '' },
-        { id: 'sign_agreement', enabled: false, url: '' },
-        { id: 'upload_photos',  enabled: true,  url: 'https://drive.google.com' },
-        { id: 'questionnaire',  enabled: true,  url: 'https://example.com/q' },
-        { id: 'draft1',         enabled: false, url: '' },
-        { id: 'draft2',         enabled: false, url: '' },
-        { id: 'pay_balance',    enabled: false, url: '' },
-      ],
-    });
     return;
   }
 
